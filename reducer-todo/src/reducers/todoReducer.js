@@ -1,5 +1,3 @@
-import Moment from 'moment'
-
 export const initialState = [
   {
     item: "Take a course",

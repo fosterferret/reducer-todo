@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const ON_INPUT_CHANGE = "ON_INPUT_CHANGE";
+const RESET = "RESET"
 
 function reducer(state, action) {
   switch (action.type) {
@@ -15,6 +16,8 @@ function reducer(state, action) {
         ...state,
         [action.payload.name]: action.payload.value
       };
+    case RESET:
+        return {...initialState}
     default:
       return state;
   }
@@ -24,6 +27,8 @@ const tags = ["Coding", "Home", "Work", "Leisure", "Study"];
 
 export default function TodoForm(props) {
   const [formValues, dispatch] = useReducer(reducer, initialState);
+  
+  console.log(formValues.doBy)
 
   const onValueChange = event => {
     dispatch({
@@ -67,6 +72,9 @@ export default function TodoForm(props) {
               type: "ADD_TODO",
               payload: { todo: formValues.todo, tag: formValues.tag, doBy: "formValues.doBy" }
             });
+            dispatch({
+                type: "RESET"
+            })
             // setTodo("");
           }}
         >

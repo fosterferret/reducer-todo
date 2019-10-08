@@ -1,58 +1,65 @@
-import React from 'react';
-import Moment from 'moment';
-
-
-
+import React from "react";
+import Moment from "moment";
+import moment from 'moment';
+moment.locale('en');
 
 export default function Todo(props) {
-  const dueDate = new Date(String(props.todo.doBy));
+  const dueDate = new Date(props.todo.doBy)
   return (
     <div>
       <h2
         style={{
-          cursor: 'pointer',
-          textDecoration: `${props.todo.completed ? 'line-through' : 'none'}`,
-          opacity: `${props.todo.completed ? '0.2' : '1'}`,
+          cursor: "pointer",
+          textDecoration: `${props.todo.completed ? "line-through" : "none"}`,
+          opacity: `${props.todo.completed ? "0.2" : "1"}`
         }}
         onClick={() =>
-          props.dispatch({ type: 'TOGGLE_TODO', payload: props.todo.id })
-        }>
+          props.dispatch({ type: "TOGGLE_TODO", payload: props.todo.id })
+        }
+      >
         {!props.todo.completed && (
           <span
             style={{
-              height: '12px',
-              width: '12px',
-              border: '2px solid white',
-              borderRadius: '50%',
-              display: 'inline-block',
-              marginRight: '2%',
-            }}></span>
+              height: "12px",
+              width: "12px",
+              border: "2px solid white",
+              borderRadius: "50%",
+              display: "inline-block",
+              marginRight: "2%"
+            }}
+          ></span>
         )}
         {props.todo.completed && (
           <span
             style={{
-              height: '12px',
-              width: '12px',
-              border: '2px solid white',
-              backgroundColor: 'white',
-              borderRadius: '50%',
-              display: 'inline-block',
-              marginRight: '2%',
-            }}></span>
+              height: "12px",
+              width: "12px",
+              border: "2px solid white",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              display: "inline-block",
+              marginRight: "2%"
+            }}
+          ></span>
         )}
         {props.todo.item}
       </h2>
       <p
         style={{
-          color: `${Date.now() > Date.parse(dueDate) ? '#cf6679' : 'white'}`,
-        }}>
-        Do By: {dueDate.toDateString()}{' '}
-        {Date.now() > Date.parse(dueDate) && 'Overdue!'}
+          color: `${Date.now() > Date.parse(dueDate) ? "#cf6679" : "white"}`
+        }}
+      >
+        <br />Due by {moment(props.todo.doBy).format('MMMM Do YYYY')}
       </p>
-      <p>Completed On:{ props.todo.completed == true ? ` ${Moment().format("ddd, hA")}` : " Not Completed"}</p>
-      <p >
+      <p>
+        Completed On:
+        {props.todo.completed == true
+          ? ` ${Moment().format("ddd, hA")}`
+          : " Not Completed"}
+      </p>
+      <p>
         {props.todo.tags.map(
-          tag => tag !== '' && <span className='tag'>{tag}</span>,
+          tag => tag !== "" && <span className="tag">{tag}</span>
         )}
       </p>
     </div>
