@@ -26,12 +26,12 @@ function reducer(state, action) {
 const tags = ["Coding", "Home", "Work", "Leisure", "Study"];
 
 export default function TodoForm(props) {
-  const [formValues, dispatch] = useReducer(reducer, initialState);
+  const [formValues, formDispatch] = useReducer(reducer, initialState);
   
   console.log(formValues.doBy)
 
   const onValueChange = event => {
-    dispatch({
+    formDispatch({
       type: ON_INPUT_CHANGE,
       payload: { name: event.target.name, value: event.target.value }
     });
@@ -49,7 +49,7 @@ export default function TodoForm(props) {
         />
 
         <select onChange={onValueChange} name="tag">
-          <option value = "select" >Select a tag</option>
+          <option>Select a tag</option>
           {tags.map((tag, index) => (
             <option key={index} value={tag}>
               {tag}
@@ -70,9 +70,9 @@ export default function TodoForm(props) {
             e.preventDefault();
             props.dispatch({
               type: "ADD_TODO",
-              payload: { todo: formValues.todo, tag: formValues.tag, doBy: "formValues.doBy" }
+              payload: { todo: formValues.todo, tag: formValues.tag, doBy: formValues.doBy }
             });
-            dispatch({
+            formDispatch({
                 type: "RESET"
             })
             // setTodo("");

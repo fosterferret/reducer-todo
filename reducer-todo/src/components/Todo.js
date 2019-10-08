@@ -1,7 +1,6 @@
 import React from "react";
 import Moment from "moment";
-import moment from 'moment';
-moment.locale('en');
+Moment.locale('en');
 
 export default function Todo(props) {
   const dueDate = new Date(props.todo.doBy)
@@ -46,16 +45,16 @@ export default function Todo(props) {
       </h2>
       <p
         style={{
-          color: `${Date.now() > Date.parse(dueDate) ? "#cf6679" : "white"}`
+          color: `${Date.now() > Date.parse(dueDate) ? "red" : "white"}`
         }}
       >
-        <br />Due by {moment(props.todo.doBy).format('MMMM Do YYYY')}
+       Due by: {Moment(props.todo.doBy).format('MMMM DD YYYY')} <span>{Date.now() > Date.parse(dueDate) ? "THIS TASK IS OVERDUE!" : ""}</span>
       </p>
-      <p>
+      <p style={{color: "pink", fontSize: "16px"}}>
         Completed On:
-        {props.todo.completed == true
+        {props.todo.completed === true
           ? ` ${Moment().format("ddd, hA")}`
-          : " Not Completed"}
+          : " Not Completed Yet"}
       </p>
       <p>
         {props.todo.tags.map(
