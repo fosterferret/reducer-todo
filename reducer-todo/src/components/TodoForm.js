@@ -2,7 +2,8 @@ import React, { useReducer } from "react";
 
 const initialState = {
   todo: "",
-  tag: ""
+  tag: "",
+  doBy: ""
 };
 
 const ON_INPUT_CHANGE = "ON_INPUT_CHANGE";
@@ -43,20 +44,28 @@ export default function TodoForm(props) {
         />
 
         <select onChange={onValueChange} name="tag">
-          <option>Select a tag</option>
+          <option value = "select" >Select a tag</option>
           {tags.map((tag, index) => (
-            <option key={index} name="tag" value={tag}>
+            <option key={index} value={tag}>
               {tag}
             </option>
           ))}
         </select>
+
+        <input
+          name="doBy"
+          type="date"
+          value={formValues.doBy}
+          placeholder="Enter a todo..."
+          onChange={onValueChange}
+        />
 
         <button
           onClick={e => {
             e.preventDefault();
             props.dispatch({
               type: "ADD_TODO",
-              payload: { todo: formValues.todo, tag: formValues.tag }
+              payload: { todo: formValues.todo, tag: formValues.tag, doBy: "formValues.doBy" }
             });
             // setTodo("");
           }}

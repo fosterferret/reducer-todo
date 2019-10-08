@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Reducer Todo App</h1>
+      <h1>Todo App</h1>
       <TodoForm dispatch={dispatch} />
       <TodoList state={state} dispatch={dispatch} />
       <ClearCompleted dispatch={dispatch} />

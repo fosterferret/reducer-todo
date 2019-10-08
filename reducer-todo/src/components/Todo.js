@@ -1,7 +1,11 @@
 import React from 'react';
+import Moment from 'moment';
+
+
+
 
 export default function Todo(props) {
-  const dueDate = new Date(props.todo.doBy);
+  const dueDate = new Date(String(props.todo.doBy));
   return (
     <div>
       <h2
@@ -45,7 +49,8 @@ export default function Todo(props) {
         Do By: {dueDate.toDateString()}{' '}
         {Date.now() > Date.parse(dueDate) && 'Overdue!'}
       </p>
-      <p>
+      <p>Completed On:{ props.todo.completed == true ? ` ${Moment().format("ddd, hA")}` : " Not Completed"}</p>
+      <p >
         {props.todo.tags.map(
           tag => tag !== '' && <span className='tag'>{tag}</span>,
         )}

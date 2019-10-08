@@ -1,6 +1,8 @@
+import Moment from 'moment'
+
 export const initialState = [
   {
-    item: "Learn about reducers",
+    item: "Take a course",
     completed: false,
     id: Date.now(),
     doBy: "October 10, 2019",
@@ -17,14 +19,14 @@ export const todoReducer = (state, action) => {
           item: action.payload.todo,
           completed: false,
           id: Date.now(),
-          doBy: Date.now() + 604800000,
-          tags: [action.payload.tag]
+          doBy: action.payload.doBy,
+          tags: [action.payload.tag],
         }
       ];
     case "TOGGLE_TODO":
       return state.map(todo => {
         return todo.id === action.payload
-          ? { ...todo, completed: !todo.completed }
+          ? { ...todo, completed: !todo.completed}
           : todo;
       });
     case "CLEAR_COMPLETED":
