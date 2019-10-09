@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.App {
+  text-align: center;
+  max-width: 800px;
+  min-height: 1000px;
+  margin: 0 auto;
+  background-color: #303030;
+  padding: 10px 0 40px 0;
+  box-shadow: 3px 8px 8px 0px black;
+}
+
+body {
+  background-color: #212121;
+  padding: 5%;
+  font-family: 'Muli', sans-serif;
+}
+
+h1 {
+  color: #f06292;
+  padding: 12px;
+}
+
+h2 {
+  color: white;
+  font-weight: normal;
+  margin: 50px 10% 0;
+  font-size: 24px;
+  text-align: left;
+}
+
+.input-bar {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  max-width: 100%;
+  padding: 10px 3%;
+  border: none;
+  font-family: inherit;
+  font-size: 18px;
+  background-color: #424242;
+  color: white;
+}
+
+p {
+  margin: 0 0 0 10%;
+  text-align: left;
+  font-size: 14px;
+}
+
+select {
+  padding: 10px 3%;
+  border: none;
+  font-family: inherit;
+  font-size: 18px;
+  outline: none;
+  height: 42px;
+  background-color: #424242;
+  color: white;
+  margin: 0 5px;
+}
+
+button {
+  background-color: #f06292;
+  border-radius: 15px;
+  color: black;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 5%;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.75;
+}
+
+button:active {
+  background-color: black;
+  color: #03dac6;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f06292;
+  margin-top: 3px;
+  margin-right: 7px;
+  padding: 3px 1%;
+}
+
+.clear-button {
+  margin-top: 100px;
+}
